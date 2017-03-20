@@ -1,0 +1,35 @@
+@RELATION SCIAA
+@ATTRIBUTE H90  	NUMERIC
+@ATTRIBUTE H80   	NUMERIC
+@ATTRIBUTE H70  	NUMERIC
+@ATTRIBUTE H60  	NUMERIC
+@ATTRIBUTE H50  	NUMERIC
+@ATTRIBUTE total_printed   NUMERIC
+@ATTRIBUTE total_handwritten   NUMERIC
+@ATTRIBUTE total   NUMERIC
+@ATTRIBUTE  class    {printed, handwritten}
+@DATA
+71,16,8,1,4,100,100,200,handwritten
+74,14,4,5,4,102,101,203,handwritten
+13,6,4,2,2,86,27,113,handwritten
+5,9,5,8,5,76,32,108,handwritten
+71,22,18,17,7,102,135,237,handwritten
+10,7,14,18,16,73,65,138,handwritten
+54,17,15,15,10,101,111,212,handwritten
+19,12,13,9,13,53,66,119,handwritten
+41,23,12,8,8,23,92,115,handwritten
+5,8,12,12,11,90,48,138,handwritten
+40,13,10,4,9,25,76,101,handwritten
+20,16,23,15,18,93,92,185,handwritten
+24,21,22,9,9,68,85,153,handwritten
+10,8,6,12,8,85,44,129,handwritten
+45,13,11,6,4,26,79,105,handwritten
+10,10,11,16,10,99,57,156,handwritten
+14,11,10,10,12,77,57,134,handwritten
+7,17,17,9,14,70,64,134,handwritten
+14,12,12,13,10,90,61,151,handwritten
+31,18,14,9,11,29,83,112,handwritten
+7,8,11,12,9,66,47,113,handwritten
+61,12,11,8,3,87,95,182,handwritten
+52,29,20,13,14,124,128,252,handwritten
+124,36,10,9,4,7,183,190,handwritten

@@ -1,0 +1,107 @@
+@RELATION SCIAA
+@ATTRIBUTE H90  	NUMERIC
+@ATTRIBUTE H80   	NUMERIC
+@ATTRIBUTE H70  	NUMERIC
+@ATTRIBUTE H60  	NUMERIC
+@ATTRIBUTE H50  	NUMERIC
+@ATTRIBUTE total_printed   NUMERIC
+@ATTRIBUTE total_handwritten   NUMERIC
+@ATTRIBUTE total   NUMERIC
+@ATTRIBUTE  class    {printed, handwritten}
+@DATA
+0,0,0,1,0,149,1,150,printed
+6,4,10,6,7,272,33,305,printed
+14,8,3,6,5,126,36,162,printed
+5,4,7,9,6,112,31,143,printed
+5,11,4,8,15,99,43,142,printed
+2,5,3,4,5,245,19,264,printed
+5,1,1,3,3,144,13,157,printed
+7,1,4,3,4,174,19,193,printed
+0,1,1,1,1,126,4,130,printed
+0,0,2,1,3,122,6,128,printed
+1,3,1,0,1,141,6,147,printed
+7,0,2,3,5,260,17,277,printed
+3,1,4,5,6,300,19,319,printed
+5,1,1,1,4,207,12,219,printed
+0,1,2,0,1,167,4,171,printed
+2,4,4,3,1,243,14,257,printed
+0,4,0,2,2,129,8,137,printed
+1,3,2,2,3,173,11,184,printed
+2,5,3,2,3,134,15,149,printed
+1,1,1,2,7,140,12,152,printed
+3,2,1,6,2,148,14,162,printed
+4,4,7,10,9,224,34,258,printed
+6,5,3,3,5,139,22,161,printed
+2,5,2,8,6,236,23,259,printed
+8,6,4,2,5,145,25,170,printed
+4,2,4,4,3,132,17,149,printed
+2,1,0,0,3,122,6,128,printed
+1,3,3,1,3,119,11,130,printed
+1,2,0,1,6,122,10,132,printed
+0,2,0,1,2,123,5,128,printed
+3,3,0,2,5,139,13,152,printed
+1,3,0,3,2,124,9,133,printed
+1,3,0,1,3,131,8,139,printed
+2,2,3,0,1,132,8,140,printed
+0,3,6,2,4,117,15,132,printed
+2,2,1,1,1,169,7,176,printed
+6,0,0,2,0,131,8,139,printed
+0,4,1,1,2,134,8,142,printed
+3,2,3,0,2,131,10,141,printed
+1,2,2,1,2,164,8,172,printed
+1,1,5,3,1,118,11,129,printed
+4,4,1,2,3,147,14,161,printed
+4,0,0,1,3,138,8,146,printed
+4,1,1,3,2,144,11,155,printed
+1,1,4,1,0,122,7,129,printed
+3,2,2,1,2,120,10,130,printed
+3,8,3,4,8,226,26,252,printed
+5,2,1,0,0,147,8,155,printed
+3,1,3,0,0,152,7,159,printed
+2,3,1,3,3,135,12,147,printed
+1,2,2,3,2,174,10,184,printed
+1,1,1,0,3,137,6,143,printed
+2,3,3,2,2,175,12,187,printed
+1,1,3,5,3,130,13,143,printed
+1,1,3,2,2,128,9,137,printed
+0,1,0,1,0,133,2,135,printed
+4,0,3,0,2,166,9,175,printed
+3,2,1,1,2,181,9,190,printed
+4,1,1,4,2,136,12,148,printed
+5,5,2,1,3,236,16,252,printed
+5,5,6,1,4,280,21,301,printed
+3,2,2,0,3,192,10,202,printed
+2,2,0,1,3,115,8,123,printed
+5,1,1,2,1,143,10,153,printed
+8,3,1,2,2,148,16,164,printed
+3,2,3,5,6,145,19,164,printed
+0,3,5,3,6,99,17,116,printed
+0,1,0,0,2,133,3,136,printed
+0,0,1,0,1,113,2,115,printed
+0,1,0,0,0,185,1,186,printed
+0,0,1,0,0,154,1,155,printed
+5,6,1,4,6,186,22,208,printed
+71,16,8,1,4,100,100,200,handwritten
+74,14,4,5,4,102,101,203,handwritten
+13,6,4,2,2,86,27,113,handwritten
+5,9,5,8,5,76,32,108,handwritten
+71,22,18,17,7,102,135,237,handwritten
+10,7,14,18,16,73,65,138,handwritten
+54,17,15,15,10,101,111,212,handwritten
+19,12,13,9,13,53,66,119,handwritten
+41,23,12,8,8,23,92,115,handwritten
+5,8,12,12,11,90,48,138,handwritten
+40,13,10,4,9,25,76,101,handwritten
+20,16,23,15,18,93,92,185,handwritten
+24,21,22,9,9,68,85,153,handwritten
+10,8,6,12,8,85,44,129,handwritten
+45,13,11,6,4,26,79,105,handwritten
+10,10,11,16,10,99,57,156,handwritten
+14,11,10,10,12,77,57,134,handwritten
+7,17,17,9,14,70,64,134,handwritten
+14,12,12,13,10,90,61,151,handwritten
+31,18,14,9,11,29,83,112,handwritten
+7,8,11,12,9,66,47,113,handwritten
+61,12,11,8,3,87,95,182,handwritten
+52,29,20,13,14,124,128,252,handwritten
+124,36,10,9,4,7,183,190,handwritten
