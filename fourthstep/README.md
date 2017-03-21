@@ -1,5 +1,5 @@
 # SCIAA_spellcheck
-This repository holds files for a spell checker
+This repository holds files for a parser 
 
 ![alt-text](https://travis-ci.org/jdrain/SCIAA_spellcheck.svg?branch=master)
 
@@ -15,10 +15,9 @@ This repository holds files for a spell checker
   + spellcheck.py holds methods to run a spellchecker on a file
   + parser.py parses a file to grab pertinent info
   + checkAndParse.py implements these to process a textfile from I to O.
-implementing these methods
   + other files are scripts to test these methods
 4. Other
   + a few .json files are included; these hold information that the
-    parser needs to decide which lines to pull and which to ignore.
-  + output can be formatted as .txt or .csv, depending on
-    preference
+    parser needs to decide which lines to pull and which to ignore,
+    how to process the data into its final format, and how to insert
+    the data into the spreadsheet.
