@@ -1,1 +1,0 @@
-Use tesseract library to ocr the cleaned images. 
