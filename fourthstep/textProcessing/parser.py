@@ -337,6 +337,8 @@ function: remove new line chars from a string
 def remove_new_lines_str(s):
     s=s.replace("\n","")
     s=s.replace("\r","")
+    s=s.replace("\t","")
+    s=s.replace(";",":")
     return s
 """
 function: remove underlines from the files
