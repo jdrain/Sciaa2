@@ -15,7 +15,8 @@ TODO:
 if len(sys.argv) != 3:
     print("Incorrect number of arguments. Please use the form:"
     "python main.py <input directory> <output csv>")
-
+    return
+    
 #setting I/O vars
 dir_path=sys.argv[1]
 dbf_csv_path=sys.argv[2]
