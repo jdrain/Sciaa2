@@ -12,12 +12,13 @@ TODO:
 """
 
 #input dir and output path
-try:
-    dir_path=sys.argv[1]
-    dbf_csv_path=sys.argv[2]
-except OSError:
+if len(sys.argv) != 3:
     print("Incorrect number of arguments. Please use the form:"
     "python main.py <input directory> <output csv>")
+
+#setting I/O vars
+dir_path=sys.argv[1]
+dbf_csv_path=sys.argv[2]
 
 #get data from json files
 keys=processData.processJSON("./textProcessing/JSONdata/explicit_keys.json")
@@ -71,4 +72,3 @@ for fpath in os.listdir(dir_path):
     #writing to the dbf csv
     print("\nwriting to dbf file:")
     processData.write_to_dbf(fpath,formatted,db_field_coordinates,csvOut,dbf_csv_path)
-
