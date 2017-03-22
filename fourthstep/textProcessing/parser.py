@@ -177,7 +177,7 @@ def database_format(data,keys,encoding_keys,date_conversions):
                 added=True
             if added==False:
                 ls.append([db_key," ".join(info)])
-    
+
     #add signature that this field was computer editted
     ls.append(["COMPENTERED","Y"])
 
@@ -311,6 +311,7 @@ def remove_extra_chars(file_list,keys,nums):
         if keys[key]["IsNonNumeric"][0]==True:
             #process out numeric data
             for j in range(1,len(ls[i])):
+                ls[i][j]
                 for num in nums:
                     ls[i][j]=str(ls[i][j]).replace(num,"")
         elif keys[key]["IsNumeric"][0]==True:
@@ -327,6 +328,8 @@ def remove_new_lines(file_list):
     for i in range(0, len(file_list)):
         file_list[i]=file_list[i].replace("\n","")
         file_list[i]=file_list[i].replace("\r","")
+        file_list[i]=file_list[i].replace("\t","")
+        file_list[i]=file_list[i].replace(";",":")
     return file_list
 """
 function: remove new line chars from a string
