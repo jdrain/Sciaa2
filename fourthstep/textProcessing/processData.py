@@ -98,7 +98,7 @@ def write_to_dbf(filename, output_ls, db_field_coords, csv_out, dbf_out_path, ma
     print("test1")
     #parse filename
     f0=filename.split("/")
-    f1=f0[len(f0)-1]
+    fp=f0[len(f0)-1]
 
     #find the row
     row=None
