@@ -4,9 +4,8 @@ This repository holds files for a parser
 ![alt-text](https://travis-ci.org/jdrain/SCIAA_spellcheck.svg?branch=master)
 
 1. Improvements Needed
-  + Cleaning of the final text can be improved a little bit
-  + Spellcheck just needs to be better in general. Although it may be
-    close to the point of diminishing returns...
+  + We need to change main.py so that it actually considers different
+    form types and 1985 is not just hard coded.
 2. Main 
   + Main.py will run a batch process to get data from individual text
     files and write to a singular CSV.
