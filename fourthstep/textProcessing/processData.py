@@ -91,13 +91,14 @@ def write_to_dbf(filename, output_ls, db_field_coords, csv_out, dbf_out_path, ma
     use filename to find column
     parse filepath:
         -split over '/' and take last element
-        -split over '_' and take first element
+        -The fname is the last element, and must exactly match
+         the ID that will be used in the DB
     """
+
     print("test1")
     #parse filename
     f0=filename.split("/")
     f1=f0[len(f0)-1]
-    fp=f1.split("_")[0]
 
     #find the row
     row=None
