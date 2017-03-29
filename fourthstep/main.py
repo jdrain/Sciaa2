@@ -14,7 +14,7 @@ TODO:
 #input dir and output path
 if len(sys.argv) != 3:
     print("Incorrect number of arguments. Please use the form:"
-    "python main.py <input directory> <output csv>")
+    " python main.py <input directory> <output csv>")
 
 else:
     #setting I/O vars
