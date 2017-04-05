@@ -55,19 +55,20 @@ def find_keys(key,file_list,end):
                 #take data from j until we find the end key
                 found_end=False
                 while(found_end==False and j<len(file_list)):
-                    if fuzz.ratio(str(file_list[j]),str(end[0]))>80:
-                        #start checking
-                        potential_match=True
-                        l=1
-                        while potential_match==True and l<len(end):
-                            if fuzz.ratio(str(end[l]),str(file_list[j+l]))<70:
-                                potential_match=False
-                            l+=1
-                        if potential_match==True:
-                            found_end=True
-                            ls.append(j)
-                            ls.append(rat)
-                            ls1.append(ls)
+                    for i in end:
+                        if fuzz.ratio(str(file_list[j]),str(i[0]))>80:
+                            #start checking
+                            potential_match=True
+                            l=1
+                            while potential_match==True and l<len(i):
+                                if fuzz.ratio(str(i[l]),str(file_list[j+l]))<70:
+                                    potential_match=False
+                                l+=1
+                            if potential_match==True:
+                                found_end=True
+                                ls.append(j)
+                                ls.append(rat)
+                                ls1.append(ls)
                     j+=1
     return ls1
 """
