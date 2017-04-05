@@ -22,54 +22,71 @@ else:
     dbf_csv_path=sys.argv[2]
 
     #get data from json files
-    keys=processData.processJSON("./textProcessing/JSONdata/explicit_keys.json")
+    keys=processData.processJSON("./textProcessing/JSONdata/explicit_keys2.json")
     encoding_keys=processData.processJSON("./textProcessing/JSONdata/Encodings.json")
-    db_field_coordinates=processData.processJSON("./textProcessing/JSONdata/DatabaseFieldCoordinates.json")
+    db_field_coordinates=processData.getDatabaseFieldCoordinates(dbf_csv_path,"./textProcessing/JSONdata/DatabaseFieldCoordinates.json")
     date_conversions=processData.processJSON("./textProcessing/JSONdata/DateConversion.json")
+
+    #since the db coordinates are sometimes inconsistent, we can just
+    #mine the data from the csv here
 
     overall=[]
     for fpath in os.listdir(dir_path):
 
-        fileList=parser.read_file_simple(dir_path+"/"+fpath)
-        csvOut=processData.readCSV(dbf_csv_path)
+        #parse filepath to get the form type
+        split_fp = fpath.split(".")
+        if (len(split_fp) != 2):
+            print(
+            "Invalid filename. should be of the form: <site"
+            +" id>.<form type>"
+            )
+            print(fpath)
+	else:
+		form_type = fpath.split(".")[1]
+		if form_type not in keys.keys():
+		    form_type="68-85"
 
-        print("\nsource file: "+fpath+"\n")
+		fileList=parser.read_file_simple(dir_path+"/"+fpath)
+		csvOut=processData.readCSV(dbf_csv_path)
 
-        #parse
-        print("\nparser is removing underlines: \n")
-        fileList=parser.remove_underlines(fileList)
+		print("\nsource file: "+fpath+"\n")
 
-        print("\nparser is removing newline nums: \n")
-        fileList=parser.remove_newline_nums(fileList)
+		#parse
+		print("\nparser is removing underlines: \n")
+		fileList=parser.remove_underlines(fileList)
 
-        print("\nparser is choosing best matches: \n")
-        parsed=parser.filter_potential_data(keys["1985"],fileList)
+		print("\nparser is removing newline nums: \n")
+		fileList=parser.remove_newline_nums(fileList)
 
-        #print results
-        print("\nparsed: \n")
-        for i in parsed:
-            print(i)
+		print("\nparser is choosing best matches: \n")
+		parsed=parser.filter_potential_data(keys[form_type],fileList)
 
-        extracted=parser.extract_data(fileList,parsed,keys["1985"])
+                if parsed == []:
+                    #no need to write nothing to a file
+                    print("Nothing here...")
 
-        print("\nextracted: \n")
-        for i in extracted:
-            print(i)
+                else:
+		    #print results
+		    print("\nparsed: \n")
+		    for i in parsed:
+		        print(i)
 
-        formatted=parser.database_format(extracted,keys["1985"],encoding_keys,date_conversions)
+		    extracted=parser.extract_data(fileList,parsed,keys[form_type])
 
-        print("\nformatted: \n")
-        for i in formatted:
-            print(i)
+		    print("\nextracted: \n")
+		    for i in extracted:
+		        print(i)
 
-        #compress and write to file
-        """
-        print("\ncompressing:\n")
-        compressed=processData.compress_list(formatted)
-        """
-        for i in formatted:
-            overall.append(i)
+		    formatted=parser.database_format(extracted,keys[form_type],encoding_keys,date_conversions)
 
-        #writing to the dbf csv
-        print("\nwriting to dbf file:")
-        processData.write_to_dbf(fpath,formatted,db_field_coordinates,csvOut,dbf_csv_path)
+		    print("\nformatted: \n")
+		    for i in formatted:
+		        print(i)
+
+		    #compress and write to file
+		    for i in formatted:
+		        overall.append(i)
+
+		    #writing to the dbf csv
+		    print("\nwriting to dbf file:")
+		    processData.write_to_dbf(fpath,formatted,db_field_coordinates,csvOut,dbf_csv_path)
