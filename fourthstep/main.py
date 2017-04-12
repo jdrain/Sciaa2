@@ -22,7 +22,7 @@ else:
     dbf_csv_path=sys.argv[2]
 
     #get data from json files
-    keys=processData.processJSON("./textProcessing/JSONdata/explicit_keys2.json")
+    keys=processData.processJSON("./textProcessing/JSONdata/explicit_keys.json")
     encoding_keys=processData.processJSON("./textProcessing/JSONdata/Encodings.json")
     db_field_coordinates=processData.getDatabaseFieldCoordinates(dbf_csv_path,"./textProcessing/JSONdata/DatabaseFieldCoordinates.json")
     date_conversions=processData.processJSON("./textProcessing/JSONdata/DateConversion.json")
