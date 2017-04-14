@@ -2,6 +2,7 @@
 
 from fuzzywuzzy import fuzz
 from recognize_dates import get_date
+import re.*
 
 """
 function: read a file into a one dimension list of words
@@ -182,11 +183,23 @@ def database_format(data,keys,encoding_keys,date_conversions):
     #add signature that this field was computer editted
     ls.append(["COMPENTERED","Y"])
 
-    #remove new lines from the output
+    #remove new lines from the output and filter nonsense output
     for i in range(0,len(ls)):
         ls[i][1]=remove_new_lines_str(ls[i][1])
+        if is_nonsense_entry(ls[i][1]):
+            ls.remove(ls[i])
 
     return ls
+"""
+function: filter nonsense entries that have junk characters
+"""
+def is_nonsense_entry(potential_entry):
+    regex = '([\w\s\(\);:\'\"\,\./]*)'
+    s = search(regex,potential_entry)
+    if s.group() == potential_entry:
+        return False
+    else:
+        return True
 """
 function: process site dimensions
 """
