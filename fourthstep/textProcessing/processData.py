@@ -24,10 +24,12 @@ def getDatabaseFieldCoordinates(csv_filepath, pertinent_fields):
     for i in range(0,len(csv_ls[0])):
         if csv_ls[0][i] in pertinent_fields:
             pertinent_fields_dict[csv_ls[0][i]]=i
-    #add COMPENTERED manually
+    
+    #add COMPENTERED and EDITTEDFIELDS manually
     if "COMPENTERED" not in pertinent_fields_dict.keys():
         pertinent_fields_dict["COMPENTERED"] = len(csv_ls[0])
-
+    if "EDITTEDFIELDS" not in pertinent_fields_dict.keys():
+        pertinent_fields_dict["EDITTEDFIELDS"] = len(csv_ls[0])+1
     return pertinent_fields_dict
 
 
@@ -114,13 +116,17 @@ def write_to_dbf(filename, output_ls, db_field_coords, csv_out, dbf_out_path, ma
          the ID that will be used in the DB
     """
     
-    #add another column to CSV out if COMPENTERED has not already been
+    #add columns to CSV out if COMPENTERED and EDITTEDFIELDS have not already been
     #added
-    if csv_out[0][len(csv_out[0])-1] != "COMPENTERED":
+    if csv_out[0][len(csv_out[0])-2] != "COMPENTERED":
         csv_out[0].append("COMPENTERED")
         for i in range(1,len(csv_out)):
             csv_out[i].append("")
-            
+    if csv_out[0][len(csv_out[0])-1] != "EDITTEDFIELDS":
+        csv_out[0].append("EDITTEDFIELDS")
+        for i in range(1,len(csv_out)):
+            csv_out[i].append("")
+
     print("test1")
     #parse filename
     f0=filename.split("/")

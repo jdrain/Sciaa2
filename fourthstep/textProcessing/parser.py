@@ -2,7 +2,7 @@
 
 from fuzzywuzzy import fuzz
 from recognize_dates import get_date
-import re.*
+import re
 
 """
 function: read a file into a one dimension list of words
@@ -160,7 +160,17 @@ def database_format(data,keys,encoding_keys,date_conversions):
             elif top_key=="archaeological investigation":
                 ai_keys=keys[top_key]["FieldName"]
                 ai_encoded=keys[top_key]["Encoded"]
-                for i in process_archaeological_components(info,ai_keys,ai_encoded):
+                print("\nAI KEYS: \n")
+                print(ai_keys)
+                print("\nAI ENCODED KEYS: \n")
+                print(ai_encoded)
+                for i in process_archaeological_investigation(info,ai_keys,ai_encoded):
+                    ls.append(i)
+                added=True
+            elif top_key=="archaeological components":
+                ac_keys=keys[top_key]["FieldName"]
+                ac_encoded=keys[top_key]["Encoded"]
+                for i in process_archaeological_components(info,ac_keys,ac_encoded):
                     ls.append(i)
                 added=True
             #eventually add a db_column var
@@ -179,27 +189,42 @@ def database_format(data,keys,encoding_keys,date_conversions):
                 added=True
             if added==False:
                 ls.append([db_key," ".join(info)])
-
-    #add signature that this field was computer editted
-    ls.append(["COMPENTERED","Y"])
-
+    
     #remove new lines from the output and filter nonsense output
-    for i in range(0,len(ls)):
+    i = 0
+    while i < len(ls):
         ls[i][1]=remove_new_lines_str(ls[i][1])
-        if is_nonsense_entry(ls[i][1]):
+        if is_nonsense_entry(ls[i][1]) or is_empty_entry(ls[i][1]):
             ls.remove(ls[i])
+        else:
+            i+=1
 
+    # add signature that this field was computer editted
+    # and explicity mention the editted fields
+    ls_editted_keys = [i[0] for i in ls]
+    ls1 = ["EDITTEDFIELDS"," ".join(ls_editted_keys)]
+    ls.append(["COMPENTERED","Y"])
+    ls.append(ls1)
+ 
     return ls
 """
-function: filter nonsense entries that have junk characters
+function: determine whether an entry is nonsense
 """
 def is_nonsense_entry(potential_entry):
     regex = '([\w\s\(\);:\'\"\,\./]*)'
-    s = search(regex,potential_entry)
+    s = re.search(regex,potential_entry)
     if s.group() == potential_entry:
         return False
     else:
         return True
+"""
+function: determine whether an entry is empty or not
+"""
+def is_empty_entry(potential_entry):
+    if potential_entry == '':
+        return True
+    else:
+        return False
 """
 function: process site dimensions
 """
@@ -246,6 +271,16 @@ def process_encoded_fields(info,db_key,encoding_keys):
     else:
         info=[""]
     return [db_key," ".join(info)]
+"""
+function: deal with archaeological investigation
+"""
+def process_archaeological_investigation(info,keys,encoded):
+    ls =  []
+    for i in range(0,len(info)):
+        for j in range(0,len(encoded)):
+            if fuzz.ratio(str(info[i]),str(encoded[j])) >= 80:
+                ls.append([keys[j],"Y"])
+    return ls
 """
 function: deal with archaeological components
 """
